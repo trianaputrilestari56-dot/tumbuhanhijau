@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TANAMAN HIJAU - Lengkap, Praktis, Siap Tanam!</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Quicksand',sans-serif;}
+:root{
+  --hijau-tua:#1e4a2b; --hijau-daun:#3a7d44; --hijau-muda:#a7c9a1;
+  --cream:#f9f6ef; --beige:#ede7d9; --putih:#fff; --coklat:#a77b5a;
+  --shadow:0 8px 20px rgba(0,40,0,.08); --radius:24px;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--cream);color:#2e3b2c;line-height:1.5;overflow-x:hidden;}
+.container{max-width:1200px;margin:0 auto;padding:0 20px;}
+img{max-width:100%;display:block;}
+
+/* NAVBAR */
+.navbar{position:sticky;top:0;z-index:900;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);box-shadow:0 4px 12px rgba(0,30,0,.06);padding:10px 0;border-bottom:1px solid #d9e3d4;}
+.nav-container{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+.logo{font-size:1.4rem;font-weight:700;color:var(--hijau-tua);display:flex;align-items:center;gap:6px;white-space:nowrap;}
+.logo i{color:var(--hijau-daun);}
+.nav-menu{display:flex;gap:18px;align-items:center;}
+.nav-menu a{text-decoration:none;color:#2e3b2c;font-weight:600;font-size:.9rem;transition:color .2s;}
+.nav-menu a:hover{color:var(--hijau-daun);}
+.nav-icons{display:flex;align-items:center;gap:14px;position:relative;}
+.nav-icons i{font-size:1.15rem;color:var(--hijau-tua);cursor:pointer;transition:transform .2s;}
+.nav-icons i:hover{transform:scale(1.15);color:var(--hijau-daun);}
+.cart-count{position:absolute;top:-8px;left:14px;background:#e07b39;color:#fff;font-size:.65rem;font-weight:700;padding:2px 5px;border-radius:20px;min-width:16px;text-align:center;}
+.btn-pesan-nav{background:var(--hijau-daun);color:#fff !important;padding:7px 14px;border-radius:40px;font-weight:700;font-size:.78rem;text-decoration:none;white-space:nowrap;}
+.btn-pesan-nav:hover{background:var(--hijau-tua);}
+.menu-toggle{display:none;font-size:1.5rem;cursor:pointer;color:var(--hijau-tua);}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,#e3f0dd 0%,#c8e0c0 100%);padding:40px 0 50px;position:relative;overflow:hidden;border-bottom-left-radius:40px;border-bottom-right-radius:40px;}
+.hero::before{content:"🌿";position:absolute;top:15px;left:15px;font-size:4rem;opacity:.15;transform:rotate(-20deg);}
+.hero::after{content:"🍃";position:absolute;bottom:15px;right:20px;font-size:5rem;opacity:.15;transform:rotate(15deg);}
+.hero-content{display:flex;align-items:center;gap:30px;flex-wrap:wrap;position:relative;z-index:2;}
+.hero-text{flex:1;min-width:270px;}
+.hero-text h1{font-size:2.4rem;font-weight:700;color:var(--hijau-tua);line-height:1.15;margin-bottom:8px;}
+.hero-text .tagline{font-size:1.1rem;font-weight:600;color:var(--hijau-daun);margin-bottom:10px;}
+.hero-text p{font-size:.95rem;color:#3d4f3a;margin-bottom:18px;max-width:500px;}
+.hero-buttons{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:22px;}
+.btn-primary,.btn-secondary{padding:12px 26px;border-radius:40px;font-weight:700;font-size:.9rem;border:none;cursor:pointer;text-decoration:none;display:inline-block;text-align:center;transition:all .2s;}
+.btn-primary{background:var(--hijau-daun);color:#fff;box-shadow:0 8px 16px rgba(58,125,68,.3);}
+.btn-primary:hover{background:var(--hijau-tua);transform:translateY(-2px);}
+.btn-secondary{background:#fff;color:var(--hijau-tua);border:2px solid var(--hijau-daun);}
+.btn-secondary:hover{background:#f0f7ec;}
+.hero-highlights{display:flex;flex-wrap:wrap;gap:6px 16px;color:var(--hijau-tua);font-weight:600;}
+.hero-highlights span{display:flex;align-items:center;gap:5px;font-size:.82rem;}
+.hero-image{flex:1;min-width:250px;height:280px;background:url('https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?w=800&auto=format&fit=crop&q=80') center/cover;border-radius:40px 40px 40px 8px;box-shadow:var(--shadow);border:5px solid #fff;}
+
+/* SECTION */
+section{padding:50px 0;}
+.section-title{font-size:1.9rem;font-weight:700;color:var(--hijau-tua);margin-bottom:6px;text-align:center;}
+.section-subtitle{text-align:center;color:#4c5e48;margin-bottom:34px;font-size:.95rem;}
+
+/* PAKET */
+.paket-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px;}
+.paket-card{background:#fff;border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);transition:transform .2s;display:flex;flex-direction:column;border:1px solid #e1ebdb;}
+.paket-card:hover{transform:translateY(-5px);}
+.paket-card img{width:100%;height:160px;object-fit:cover;border-radius:18px;margin-bottom:12px;}
+.paket-card h3{font-size:1.2rem;color:var(--hijau-tua);margin-bottom:6px;}
+.paket-card ul{list-style:none;margin:6px 0 12px;color:#3e4f3b;font-size:.85rem;}
+.paket-card li{padding:3px 0;display:flex;align-items:center;gap:6px;}
+.paket-card li i{color:var(--hijau-daun);font-size:.8rem;}
+.harga{font-size:1.25rem;font-weight:700;color:var(--hijau-tua);margin:6px 0 12px;}
+.paket-actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:auto;}
+.btn-small{padding:8px 12px;border-radius:30px;font-weight:600;font-size:.75rem;border:none;cursor:pointer;background:var(--beige);color:var(--hijau-tua);display:inline-flex;align-items:center;gap:5px;text-decoration:none;justify-content:center;flex:1;transition:all .2s;}
+.btn-small.primary{background:var(--hijau-daun);color:#fff;}
+.btn-small.primary:hover{background:var(--hijau-tua);}
+.btn-small:hover{background:#d9e3d0;}
+.btn-small.wa{background:#25D366;color:#fff;}
+.btn-small.wa:hover{background:#1da851;}
+
+/* FILTER */
+.filter-section{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px;margin-bottom:26px;}
+.kategori-list{display:flex;flex-wrap:wrap;gap:6px;}
+.kategori-btn{background:#fff;border:1px solid #cbdcc2;padding:6px 14px;border-radius:40px;font-weight:600;color:#2e3b2c;cursor:pointer;transition:all .2s;font-size:.8rem;}
+.kategori-btn.active,.kategori-btn:hover{background:var(--hijau-daun);color:#fff;border-color:var(--hijau-daun);}
+.search-box{display:flex;align-items:center;background:#fff;border-radius:40px;padding:5px 14px;border:1px solid #cbdcc2;box-shadow:var(--shadow);}
+.search-box input{border:none;outline:none;padding:7px 6px;font-size:.9rem;width:170px;background:transparent;}
+.search-box i{color:var(--hijau-daun);}
+
+/* PRODUK */
+.produk-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:20px;}
+.produk-card{background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:transform .2s;border:1px solid #e6efe1;display:flex;flex-direction:column;position:relative;}
+.produk-card:hover{transform:translateY(-5px);}
+.produk-card img{width:100%;height:160px;object-fit:cover;}
+.produk-info{padding:14px 12px 16px;display:flex;flex-direction:column;flex:1;}
+.produk-info h4{font-size:1rem;font-weight:700;color:var(--hijau-tua);margin-bottom:3px;}
+.produk-info p{font-size:.78rem;color:#4a5e46;margin-bottom:8px;flex:1;}
+.produk-harga{font-weight:700;color:var(--hijau-tua);font-size:1.05rem;margin-bottom:4px;}
+.stok{font-size:.72rem;color:#5e7a58;margin-bottom:10px;display:flex;align-items:center;gap:5px;}
+.stok.habis{color:#b33a3a;}
+.produk-actions{display:flex;flex-wrap:wrap;gap:5px;margin-top:auto;}
+.produk-actions .btn-small{padding:6px 8px;font-size:.68rem;flex:1 0 auto;}
+.wish-btn{position:absolute;top:8px;right:8px;background:#fff;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 3px 8px rgba(0,0,0,.15);color:#bbb;font-size:.8rem;border:none;transition:all .2s;z-index:3;}
+.wish-btn.active{color:#e07b39;}
+.badge-habis{position:absolute;top:8px;left:8px;background:#b33a3a;color:#fff;padding:3px 9px;border-radius:20px;font-size:.65rem;font-weight:700;z-index:3;}
+
+/* PERLENGKAPAN */
+.perlengkapan-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:18px;}
+.perlengkapan-card{background:#fff;border-radius:22px;padding:12px;text-align:center;box-shadow:var(--shadow);border:1px solid #e1ebdb;}
+.perlengkapan-card img{width:100%;height:120px;object-fit:cover;border-radius:16px;margin-bottom:8px;}
+.perlengkapan-card h4{color:var(--hijau-tua);margin-bottom:3px;font-size:.95rem;}
+.perlengkapan-card .harga{font-size:.95rem;margin:4px 0 8px;}
+.perlengkapan-card p{font-size:.72rem;color:#5a6d56;margin-bottom:8px;}
+
+/* KEUNGGULAN */
+.keunggulan-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:18px;}
+.keunggulan-item{background:#f4faf0;padding:24px 16px;border-radius:26px;text-align:center;border:1px solid #d7e8cf;}
+.keunggulan-item .icon{font-size:2.2rem;margin-bottom:8px;}
+.keunggulan-item h4{font-size:1rem;color:var(--hijau-tua);margin-bottom:6px;}
+.keunggulan-item p{font-size:.8rem;color:#4c5e48;}
+
+/* PROMO */
+.promo-banner{background:linear-gradient(115deg,#2a5e2a,#3e7a3e);border-radius:36px;padding:38px 24px;text-align:center;color:#fff;box-shadow:0 20px 30px rgba(30,70,30,.2);}
+.promo-banner h2{font-size:1.7rem;font-weight:700;line-height:1.3;margin-bottom:18px;}
+.promo-banner .btn-primary{background:#fff;color:var(--hijau-tua);box-shadow:none;font-size:1rem;padding:14px 32px;}
+
+/* TESTIMONI */
+.testimoni-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;}
+.testimoni-card{background:#fff;padding:20px 16px;border-radius:24px;box-shadow:var(--shadow);border:1px solid #e3eddd;}
+.testimoni-card .stars{color:#f5b342;margin-bottom:8px;}
+.testimoni-card p{font-style:italic;color:#3d4f3a;margin-bottom:12px;font-size:.85rem;}
+.testimoni-user{display:flex;align-items:center;gap:10px;}
+.avatar{width:36px;height:36px;background:var(--hijau-muda);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--hijau-tua);font-weight:700;font-size:.85rem;}
+
+/* ABOUT */
+.about-content{display:flex;gap:26px;flex-wrap:wrap;align-items:center;background:#f2f8ee;border-radius:36px;padding:30px 26px;}
+.about-text{flex:1;min-width:250px;}
+.about-text h2{font-size:1.5rem;color:var(--hijau-tua);margin-bottom:12px;}
+.about-text p{color:#3d4f3a;font-size:.9rem;}
+.nilai-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;}
+.nilai-list span{background:#fff;padding:6px 16px;border-radius:40px;font-weight:600;color:var(--hijau-tua);font-size:.8rem;}
+.about-img{flex:1;min-width:220px;height:200px;background:url('https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?w=600&auto=format&fit=crop&q=80') center/cover;border-radius:28px;box-shadow:var(--shadow);}
+
+/* FAQ */
+.faq-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;}
+.faq-item{background:#fff;border-radius:16px;padding:16px 18px;box-shadow:0 4px 12px rgba(0,30,0,.04);border-left:5px solid var(--hijau-daun);}
+.faq-item h4{color:var(--hijau-tua);margin-bottom:5px;font-size:.95rem;}
+.faq-item p{color:#4c5e48;font-size:.82rem;}
+
+/* FOOTER */
+footer{background:#1f3a24;color:#e5f0df;padding:36px 0 16px;border-top-left-radius:36px;border-top-right-radius:36px;margin-top:20px;}
+.footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:22px;margin-bottom:24px;}
+.footer-logo{font-size:1.3rem;font-weight:700;color:#fff;margin-bottom:6px;}
+.footer-links a{display:block;color:#c6ddbc;text-decoration:none;margin-bottom:5px;font-size:.85rem;}
+.footer-links a:hover{color:#fff;}
+.footer-btn{background:var(--hijau-daun);color:#fff;border:none;padding:9px 18px;border-radius:40px;font-weight:700;cursor:pointer;margin-top:8px;text-decoration:none;display:inline-block;font-size:.8rem;}
+.footer-btn:hover{background:#2b6e2b;}
+.copyright{text-align:center;border-top:1px solid #3f5a3f;padding-top:14px;color:#b8d0ae;font-size:.78rem;}
+
+/* FLOATING WA */
+.float-wa{position:fixed;bottom:20px;right:20px;background:#25D366;color:#fff;width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.6rem;box-shadow:0 8px 20px rgba(0,0,0,.25);z-index:990;text-decoration:none;transition:transform .2s;}
+.float-wa:hover{transform:scale(1.1);color:#fff;}
+
+/* MODAL */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,20,0,.55);backdrop-filter:blur(4px);z-index:1000;align-items:center;justify-content:center;padding:16px;}
+.modal-overlay.active{display:flex;}
+.modal-box{background:#fff;max-width:500px;width:100%;border-radius:28px;padding:24px;box-shadow:0 30px 50px rgba(0,0,0,.3);max-height:88vh;overflow-y:auto;}
+.modal-box h3{color:var(--hijau-tua);margin-bottom:14px;font-size:1.35rem;display:flex;justify-content:space-between;align-items:center;}
+.modal-close{font-size:1.5rem;cursor:pointer;color:#999;background:none;border:none;}
+.modal-close:hover{color:#333;}
+.detail-img{width:100%;height:190px;object-fit:cover;border-radius:18px;margin-bottom:12px;}
+.detail-row{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px dashed #e0e8da;font-size:.85rem;}
+.detail-row span:first-child{color:#6b7d66;}
+.qty-control{display:flex;align-items:center;gap:10px;margin:12px 0;}
+.qty-control button{width:34px;height:34px;border-radius:50%;border:1px solid #cbdcc2;background:#fff;font-size:1rem;cursor:pointer;color:var(--hijau-tua);}
+.qty-control button:hover{background:var(--beige);}
+.qty-control input{width:50px;text-align:center;border:1px solid #cbdcc2;border-radius:10px;padding:5px;font-size:.95rem;}
+
+/* CART */
+.cart-item{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid #eee;align-items:center;}
+.cart-item img{width:55px;height:55px;object-fit:cover;border-radius:10px;}
+.cart-item-info{flex:1;}
+.cart-item-info h5{font-size:.9rem;color:var(--hijau-tua);margin-bottom:3px;}
+.cart-item-info .price{font-size:.78rem;color:#666;}
+.cart-item-qty{display:flex;align-items:center;gap:5px;margin-top:5px;}
+.cart-item-qty button{width:24px;height:24px;border-radius:50%;border:1px solid #cbdcc2;background:#fff;cursor:pointer;font-size:.75rem;}
+.cart-item-remove{background:none;border:none;color:#c0392b;cursor:pointer;font-size:.95rem;}
+.cart-total{text-align:right;font-weight:700;font-size:1.05rem;margin:14px 0;color:var(--hijau-tua);}
+.empty-cart{text-align:center;padding:26px;color:#888;}
+.empty-cart i{font-size:2.6rem;color:#cbdcc2;margin-bottom:10px;display:block;}
+
+/* FORM */
+.form-group{margin-bottom:12px;}
+.form-group label{display:block;font-size:.8rem;font-weight:600;color:#3d4f3a;margin-bottom:4px;}
+.form-group input,.form-group textarea,.form-group select{width:100%;padding:9px 12px;border:1px solid #cbdcc2;border-radius:12px;font-size:.85rem;font-family:inherit;outline:none;}
+.form-group input:focus,.form-group textarea:focus{border-color:var(--hijau-daun);}
+.form-group textarea{resize:vertical;min-height:55px;}
+.radio-group{display:flex;gap:14px;margin-top:4px;}
+.radio-group label{display:flex;align-items:center;gap:5px;font-weight:500;cursor:pointer;font-size:.85rem;}
+
+/* NOTIF */
+.notif{position:fixed;bottom:85px;right:20px;background:var(--hijau-tua);color:#fff;padding:11px 20px;border-radius:50px;box-shadow:0 10px 25px rgba(0,0,0,.25);z-index:1001;font-weight:600;font-size:.85rem;display:none;}
+.notif.show{display:block;animation:fadeIn .3s;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+
+/* RESPONSIVE */
+@media(max-width:880px){
+  .nav-menu{display:none;width:100%;flex-direction:column;align-items:flex-start;padding:12px 0;gap:10px;}
+  .nav-menu.active{display:flex;}
+  .menu-toggle{display:block;}
+  .hero-text h1{font-size:1.9rem;}
+}
+@media(max-width:600px){
+  .section-title{font-size:1.5rem;}
+  .hero-text h1{font-size:1.6rem;}
+  .promo-banner h2{font-size:1.3rem;}
+  .filter-section{flex-direction:column;align-items:stretch;}
+  .search-box input{width:100%;}
+  .logo{font-size:1.1rem;}
+  .btn-pesan-nav{padding:6px 10px;font-size:.72rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="container nav-container">
+    <div class="logo"><i class="fas fa-seedling"></i> TANAMAN HIJAU</div>
+    <div class="nav-menu" id="navMenu">
+      <a href="#beranda" onclick="closeMenu()">Beranda</a>
+      <a href="#paket" onclick="closeMenu()">Paket Tanaman</a>
+      <a href="#tanaman" onclick="closeMenu()">Pilihan Tanaman</a>
+      <a href="#perlengkapan" onclick="closeMenu()">Perlengkapan</a>
+      <a href="#tentang" onclick="closeMenu()">Tentang Kami</a>
+      <a href="#kontak" onclick="closeMenu()">Kontak</a>
+    </div>
+    <div class="nav-icons">
+      <i class="fas fa-search" onclick="focusSearch()" title="Cari"></i>
+      <i class="fas fa-shopping-cart" onclick="openCart()" title="Keranjang">
+        <span class="cart-count" id="cartCount">0</span>
+      </i>
+      <a href="https://wa.me/6287768282372?text=Halo%20Tanaman%20Hijau,%20saya%20ingin%20memesan" target="_blank" class="btn-pesan-nav">Pesan Sekarang</a>
+      <i class="fas fa-bars menu-toggle" onclick="toggleMenu()"></i>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="beranda" class="hero">
+  <div class="container hero-content">
+    <div class="hero-text">
+      <h1>Lengkap, Praktis,<br>Siap Tanam!</h1>
+      <div class="tagline">Percantik rumah, hijaukan lingkungan, mulai dari sini!</div>
+      <p>Dapatkan paket tanaman lengkap beserta perlengkapan berkebun yang praktis dan siap digunakan.</p>
+      <div class="hero-buttons">
+        <a href="#paket" class="btn-primary">Belanja Sekarang</a>
+        <a href="#tanaman" class="btn-secondary">Lihat Tanaman</a>
+      </div>
+      <div class="hero-highlights">
+        <span>✓ Alat berkebun lengkap</span>
+        <span>✓ Tanaman berkualitas</span>
+        <span>✓ Mudah ditanam</span>
+        <span>✓ Cocok untuk rumah, sekolah, atau taman</span>
+      </div>
+    </div>
+    <div class="hero-image"></div>
+  </div>
+</section>
+
+<!-- PAKET TANAMAN -->
+<section id="paket">
+  <div class="container">
+    <h2 class="section-title">PAKET LENGKAP</h2>
+    <p class="section-subtitle">Satu paket sudah lengkap!</p>
+    <div class="paket-grid" id="paketGrid"></div>
+  </div>
+</section>
+
+<!-- PILIHAN TANAMAN -->
+<section id="tanaman">
+  <div class="container">
+    <h2 class="section-title">PILIHAN TANAMAN</h2>
+    <p class="section-subtitle">Temukan tanaman favoritmu</p>
+    <div class="filter-section">
+      <div class="kategori-list" id="kategoriList">
+        <button class="kategori-btn active" data-kategori="all">Semua</button>
+        <button class="kategori-btn" data-kategori="peneduh">🌳 Peneduh</button>
+        <button class="kategori-btn" data-kategori="bunga">🌸 Bunga</button>
+        <button class="kategori-btn" data-kategori="buah">🍋 Buah</button>
+        <button class="kategori-btn" data-kategori="hias">🌿 Hias</button>
+        <button class="kategori-btn" data-kategori="pekarangan">🌱 Pekarangan</button>
+        <button class="kategori-btn" data-kategori="taman">🏡 Taman</button>
+      </div>
+      <div class="search-box">
+        <i class="fas fa-search"></i>
+        <input type="text" id="searchInput" placeholder="Cari tanaman...">
+      </div>
+    </div>
+    <div class="produk-grid" id="produkGrid"></div>
+  </div>
+</section>
+
+<!-- PERLENGKAPAN -->
+<section id="perlengkapan">
+  <div class="container">
+    <h2 class="section-title">PERLENGKAPAN BERKEBUN</h2>
+    <p class="section-subtitle">Alat berkebun praktis & berkualitas</p>
+    <div class="perlengkapan-grid" id="perlengkapanGrid"></div>
+  </div>
+</section>
+
+<!-- KEUNGGULAN -->
+<section>
+  <div class="container">
+    <h2 class="section-title">Kenapa Pilih Tanaman Hijau Kami?</h2>
+    <div class="keunggulan-grid">
+      <div class="keunggulan-item"><div class="icon">🌱</div><h4>Lengkap dan Praktis</h4><p>Semua kebutuhan tanaman dan berkebun tersedia dalam satu tempat.</p></div>
+      <div class="keunggulan-item"><div class="icon">🌿</div><h4>Tanaman Sehat & Berkualitas</h4><p>Kami menyediakan pilihan tanaman yang sehat dan sesuai kebutuhan.</p></div>
+      <div class="keunggulan-item"><div class="icon">💰</div><h4>Harga Terjangkau</h4><p>Pilihan tanaman dan paket dengan harga yang ramah di kantong.</p></div>
+      <div class="keunggulan-item"><div class="icon">🚚</div><h4>Siap Tanam di Rumah Anda</h4><p>Pesanan disiapkan agar praktis untuk langsung ditanam.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROMO -->
+<section>
+  <div class="container">
+    <div class="promo-banner">
+      <h2>Tanam Hari Ini,<br>Lingkungan Lebih Hijau Esok Nanti!</h2>
+      <a href="https://wa.me/6287768282372?text=Halo%20Tanaman%20Hijau,%20saya%20ingin%20memesan" target="_blank" class="btn-primary">PESAN SEKARANG</a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONI -->
+<section>
+  <div class="container">
+    <h2 class="section-title">Apa Kata Pelanggan?</h2>
+    <p class="section-subtitle">Cerita dari pelanggan setia kami</p>
+    <div class="testimoni-grid">
+      <div class="testimoni-card"><div class="stars">★★★★★</div><p>"Tanamannya datang dalam kondisi baik dan sesuai pesanan."</p><div class="testimoni-user"><div class="avatar">A</div><div><strong>Anisa</strong><br><small>Mahasiswa</small></div></div></div>
+      <div class="testimoni-card"><div class="stars">★★★★★</div><p>"Paketan tanamannya praktis, sudah dapat alat berkebun juga."</p><div class="testimoni-user"><div class="avatar">B</div><div><strong>Budi</strong><br><small>Pemilik Rumah</small></div></div></div>
+      <div class="testimoni-card"><div class="stars">★★★★☆</div><p>"Pilihan tanamannya banyak dan cocok untuk halaman rumah."</p><div class="testimoni-user"><div class="avatar">C</div><div><strong>Citra</strong><br><small>Ibu Rumah Tangga</small></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TENTANG -->
+<section id="tentang">
+  <div class="container">
+    <div class="about-content">
+      <div class="about-text">
+        <h2>Tentang Tanaman Hijau</h2>
+        <p>Tanaman Hijau hadir untuk membantu masyarakat mendapatkan tanaman dan perlengkapan berkebun secara praktis. Kami menyediakan berbagai pilihan tanaman hias, tanaman buah, tanaman peneduh, serta paket berkebun yang cocok untuk rumah, sekolah, taman, dan lingkungan sekitar.</p>
+        <div class="nilai-list"><span>Praktis</span><span>Berkualitas</span><span>Terjangkau</span><span>Ramah Lingkungan</span></div>
+      </div>
+      <div class="about-img"></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="container">
+    <h2 class="section-title">Pertanyaan Umum</h2>
+    <p class="section-subtitle">Hal yang sering ditanyakan pelanggan</p>
+    <div class="faq-grid">
+      <div class="faq-item"><h4>Bagaimana cara memesan tanaman?</h4><p>Pilih produk, tambahkan ke keranjang, lalu checkout atau langsung pesan via WhatsApp.</p></div>
+      <div class="faq-item"><h4>Apakah tanaman bisa dikirim?</h4><p>Ya, kami menyediakan pilihan pengiriman atau ambil sendiri di toko.</p></div>
+      <div class="faq-item"><h4>Apakah bisa memilih jenis tanaman?</h4><p>Tentu! Anda dapat memilih tanaman sesuai kebutuhan.</p></div>
+      <div class="faq-item"><h4>Apakah tersedia paket tanaman?</h4><p>Ya, tersedia Paket Pemula, Paket Hijau, dan Paket Taman.</p></div>
+      <div class="faq-item"><h4>Bagaimana cara mengetahui stok tanaman?</h4><p>Status stok tertera pada setiap kartu produk.</p></div>
+      <div class="faq-item"><h4>Apakah bisa konsultasi memilih tanaman?</h4><p>Bisa! Hubungi kami di <a href="https://wa.me/6287768282372" target="_blank" style="color:var(--hijau-daun);font-weight:700;">WhatsApp 087768282372</a>.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="kontak">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">🌿 TANAMAN HIJAU</div>
+        <p style="color:#c6ddbc;font-size:.85rem;">"Lengkap, Praktis, Siap Tanam!"</p>
+      </div>
+      <div class="footer-links">
+        <strong style="display:block;margin-bottom:8px;color:#fff;">Menu</strong>
+        <a href="#beranda">Beranda</a>
+        <a href="#paket">Paket Tanaman</a>
+        <a href="#tanaman">Pilihan Tanaman</a>
+        <a href="#perlengkapan">Perlengkapan</a>
+        <a href="#tentang">Tentang Kami</a>
+      </div>
+      <div class="footer-links">
+        <strong style="display:block;margin-bottom:8px;color:#fff;">Kontak</strong>
+        <a href="https://wa.me/6287768282372" target="_blank">WhatsApp: 087768282372</a>
+        <a href="https://wa.me/6287768282372?text=Halo%20Tanaman%20Hijau" target="_blank" class="footer-btn">Chat WhatsApp</a>
+      </div>
+    </div>
+    <div class="copyright">© 2026 Tanaman Hijau. Semua Hak Dilindungi.</div>
+  </div>
+</footer>
+
+<!-- FLOATING WA -->
+<a href="https://wa.me/6287768282372?text=Halo%20Tanaman%20Hijau,%20saya%20ingin%20bertanya" target="_blank" class="float-wa" title="Chat WhatsApp"><i class="fab fa-whatsapp"></i></a>
+
+<!-- NOTIF -->
+<div class="notif" id="notif"></div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-box" id="modalBox"></div>
+</div>
+
+<script>
+/* ============ DATA PRODUK ============ */
+const paketData = [
+  {
+    id:'paket-pemula', nama:'PAKET PEMULA', harga:50000,
+    img:'https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=600&auto=format&fit=crop&q=80',
+    isi:['1 sekop tanaman (Rp 15.000)','1 penyiram tanaman (Rp 15.000)','1 tanaman pilihan (Rp 20.000)']
+  },
+  {
+    id:'paket-hijau', nama:'PAKET HIJAU', harga:67000,
+    img:'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&auto=format&fit=crop&q=80',
+    isi:['1 sekop tanaman (Rp 15.000)','1 penyiram tanaman (Rp 15.000)','2 tanaman pilihan (Rp 37.000)']
+  },
+  {
+    id:'paket-taman', nama:'PAKET TAMAN', harga:120000,
+    img:'https://images.unsplash.com/photo-1584479898061-15742e14f50d?w=600&auto=format&fit=crop&q=80',
+    isi:['Peralatan berkebun lengkap','3 tanaman pilihan','Cocok untuk taman rumah']
+  }
+];
+
+const tanamanData = [
+  {id:'ketapang', nama:'Ketapang Kencana', harga:20000, kategori:['peneduh','pekarangan','taman'], stok:true,
+   img:'https://images.unsplash.com/photo-1614594975525-e45190c55d0b?w=600&auto=format&fit=crop&q=80',
+   desc:'Tajuk rindang dan indah, cocok untuk penghijauan dan memiliki pertumbuhan cepat.',
+   manfaat:'Peneduh alami, penyerap polusi, mempercantik halaman.',
+   cocok:'Halaman rumah, taman, jalan, area parkir.',
+   perawatan:'Mudah - cukup sinar matahari & air teratur.',
+   ukuran:'Tinggi ±50-70 cm'},
+  {id:'bungakertas', nama:'Bunga Kertas', harga:18000, kategori:['bunga','hias','taman'], stok:true,
+   img:'https://images.unsplash.com/photo-1593691509543-c55fb32e5cee?w=600&auto=format&fit=crop&q=80',
+   desc:'Warna bunga beragam, mudah dirawat, dan cocok untuk pagar atau taman.',
+   manfaat:'Mempercantik taman, warna cerah, tahan panas.',
+   cocok:'Pagar rumah, taman, pot gantung.',
+   perawatan:'Sangat mudah - tahan panas & jarang disiram.',
+   ukuran:'Tinggi ±40-60 cm'},
+  {id:'tebabuya', nama:'Tabebuya', harga:17000, kategori:['bunga','hias','peneduh','taman'], stok:true,
+   img:'https://images.unsplash.com/photo-1554631221-f9603e6808f9?w=600&auto=format&fit=crop&q=80',
+   desc:'Bunga indah dan menarik, memberi keteduhan, serta cocok untuk penghijauan jalan atau taman.',
+   manfaat:'Bunga cantik, peneduh, ikonik saat berbunga.',
+   cocok:'Taman kota, jalan, halaman luas.',
+   perawatan:'Sedang - perlu sinar matahari penuh.',
+   ukuran:'Tinggi ±60-80 cm'},
+  {id:'kedondong', nama:'Kedondong', harga:27000, kategori:['buah','pekarangan'], stok:true,
+   img:'https://images.unsplash.com/photo-1623428187969-5da2dcea5ebf?w=600&auto=format&fit=crop&q=80',
+   desc:'Buah segar dan bermanfaat, mudah beradaptasi, serta cocok untuk pekarangan.',
+   manfaat:'Buah kaya vitamin C, cocok untuk rujak & jus.',
+   cocok:'Pekarangan rumah, kebun belakang.',
+   perawatan:'Mudah - tumbuh di berbagai kondisi tanah.',
+   ukuran:'Tinggi ±50-70 cm'},
+  {id:'mangga', nama:'Mangga', harga:25000, kategori:['buah','pekarangan'], stok:true,
+   img:'https://images.unsplash.com/photo-1553279768-865429fa0078?w=600&auto=format&fit=crop&q=80',
+   desc:'Buah manis dan bernutrisi, mudah dirawat, dan cocok untuk pekarangan.',
+   manfaat:'Buah manis, sumber vitamin A & C.',
+   cocok:'Pekarangan rumah, kebun.',
+   perawatan:'Mudah - perlu sinar matahari penuh.',
+   ukuran:'Tinggi ±60-80 cm'},
+  {id:'jambu', nama:'Jambu', harga:22000, kategori:['buah','pekarangan'], stok:true,
+   img:'https://images.unsplash.com/photo-1536511132770-e5058c7e8c46?w=600&auto=format&fit=crop&q=80',
+   desc:'Buah segar, mudah tumbuh, dan cocok ditanam di pekarangan.',
+   manfaat:'Buah segar kaya vitamin C, daun berkhasiat.',
+   cocok:'Pekarangan, pot besar, kebun.',
+   perawatan:'Mudah - rajin berbuah.',
+   ukuran:'Tinggi ±50-70 cm'},
+  {id:'cemara', nama:'Cemara', harga:27000, kategori:['hias','taman'], stok:true,
+   img:'https://images.unsplash.com/photo-1591955506264-3f5a6834570a?w=600&auto=format&fit=crop&q=80',
+   desc:'Tampilan rapi dan elegan, cocok untuk taman dan penghias halaman.',
+   manfaat:'Pohon hias elegan, penghijauan, pembatas alami.',
+   cocok:'Taman, halaman, pot besar.',
+   perawatan:'Mudah - tahan berbagai cuaca.',
+   ukuran:'Tinggi ±60-80 cm'},
+  {id:'pucukmerah', nama:'Palm / Pucuk Merah', harga:17000, kategori:['hias','taman'], stok:true,
+   img:'https://images.unsplash.com/photo-1509937528035-ad76254b0356?w=600&auto=format&fit=crop&q=80',
+   desc:'Warna daun indah, cocok untuk pagar hidup, dan mudah dirawat.',
+   manfaat:'Pagar hidup, warna merah cantik, mudah dibentuk.',
+   cocok:'Pagar, taman, pot.',
+   perawatan:'Mudah - tahan panas & hujan.',
+   ukuran:'Tinggi ±40-60 cm'},
+  {id:'lainnya', nama:'Tanaman Lainnya', harga:20000, kategori:['hias','taman','bunga'], stok:false,
+   img:'https://images.unsplash.com/photo-1485955900006-10f4d324d411?w=600&auto=format&fit=crop&q=80',
+   desc:'Aneka tanaman hias dan tanaman buah. Tersedia sesuai stok dan kebutuhan.',
+   manfaat:'Beragam pilihan sesuai selera.',
+   cocok:'Semua kebutuhan.',
+   perawatan:'Bervariasi.',
+   ukuran:'Bervariasi'}
+];
+
+const perlengkapanData = [
+  {id:'sekop', nama:'Sekop Tanaman', harga:15000, img:'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=400&auto=format&fit=crop&q=80', desc:'Sekop mini untuk menanam & memindahkan tanaman.'},
+  {id:'penyiram', nama:'Penyiram Tanaman', harga:15000, img:'https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=400&auto=format&fit=crop&q=80', desc:'Penyiram praktis dengan semprotan halus.'},
+  {id:'pot', nama:'Pot Tanaman', harga:12000, img:'https://images.unsplash.com/photo-1485955900006-10f4d324d411?w=400&auto=format&fit=crop&q=80', desc:'Pot plastik kuat berbagai ukuran.'},
+  {id:'media', nama:'Media Tanam', harga:10000, img:'https://images.unsplash.com/photo-1591955506264-3f5a6834570a?w=400&auto=format&fit=crop&q=80', desc:'Campuran tanah, sekam, kompos siap pakai.'},
+  {id:'set', nama:'Set Berkebun', harga:45000, img:'https://images.unsplash.com/photo-1584479898061-15742e14f50d?w=400&auto=format&fit=crop&q=80', desc:'Paket alat berkebun lengkap untuk pemula.'}
+];
+
+/* ============ STATE ============ */
+let cart = [];
+let wishlist = [];
+let filterKategori = 'all';
+let searchQuery = '';
+
+/* ============ RENDER PAKET ============ */
+function renderPaket(){
+  const el = document.getElementById('paketGrid');
+  el.innerHTML = paketData.map(p => `
+    <div class="paket-card">
+      <img src="${p.img}" alt="${p.nama}">
+      <h3>${p.nama}</h3>
+      <ul>${p.isi.map(i=>`<li><i class="fas fa-check-circle"></i> ${i}</li>`).join('')}</ul>
+      <div class="harga">Rp ${p.harga.toLocaleString('id-ID')}</div>
+      <div class="paket-actions">
+        <button class="btn-small primary" onclick="addToCart('${p.nama}',${p.harga},'${p.img}')"><i class="fas fa-cart-plus"></i> Tambah</button>
+        <a href="https://wa.me/6287768282372?text=Halo%20Tanaman%20Hijau,%20saya%20ingin%20memesan%20${encodeURIComponent(p.nama)}%20(Rp%20${p.harga})" target="_blank" class="btn-small wa"><i class="fab fa-whatsapp"></i> Pesan</a>
+      </div>
+    </div>
+  `).join('');
+}
+
+/* ============ RENDER PRODUK ============ */
+function renderProduk(){
+  const el = document.getElementById('produkGrid');
+  let data = tanamanData.filter(t => {
+    const okKat = filterKategori==='all' || t.kategori.includes(filterKategori);
+    const okSearch = t.nama.toLowerCase().includes(searchQuery.toLowerCase());
+    return okKat && okSearch;
+  });
+  if(data.length===0){
+    el.innerHTML = '<div class="loading">🌿 Tanaman tidak ditemukan. Coba kata kunci lain.</div>';
+    return;
+  }
+  el.innerHTML = data.map(t => `
+    <div class="produk-card">
+      ${!t.stok?'<span class="badge-habis">Stok Habis</span>':''}
+      <button class="wish-btn ${wishlist.includes(t.id)?'active':''}" onclick="toggleWish('${t.id}',this)" title="Wishlist"><i class="fas fa-heart"></i></button>
+      <img src="${t.img}" alt="${t.nama}">
+      <div class="produk-info">
+        <h4>${t.nama}</h4>
+        <p>${t.desc}</p>
+        <div class="produk-harga">Rp ${t.harga.toLocaleString('id-ID')}</div>
+        <div class="stok ${t.stok?'':'habis'}"><i class="fas ${t.stok?'fa-check-circle':'fa-times-circle'}"></i> ${t.stok?'Stok tersedia':'Stok habis'}</div>
+        <div class="produk-actions">
+          <button class="btn-small" onclick="showDetail('${t.id}')"><i class="fas fa-info-circle"></i> Detail</button>
+          <button class="btn-small primary" onclick="addToCart('${t.nama}',${t.harga},'${t.img}','${t.id}')" ${!t.stok?'disabled style="opacity:.5;cursor:not-allowed;"':''}><i class="fas fa-cart-plus"></i> Tambah</button>
+          <a href="https://wa.me/6287768282372?text=Halo%20Tanaman%20Hijau,%20saya%20ingin%20memesan%20${encodeURIComponent(t.nama)}%20(Rp%20${t.harga})" target="_blank" class="btn-small wa"><i class="fab fa-whatsapp"></i> Pesan</a>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+/* ============ RENDER PERLENGKAPAN ============ */
+function renderPerlengkapan(){
+  const el = document.getElementById('perlengkapanGrid');
+  el.innerHTML = perlengkapanData.map(p => `
+    <div class="perlengkapan-card">
+      <img src="${p.img}" alt="${p.nama}">
+      <h4>${p.nama}</h4>
+      <div class="harga">Rp ${p.harga.toLocaleString('id-ID')}</div>
+      <p>${p.desc}</p>
+      <button class="btn-small primary" onclick="addToCart('${p.nama}',${p.harga},'${p.img}')"><i class="fas fa-cart-plus"></i> Tambah</button>
+    </div>
+  `).join('');
+}
+
+/* ============ FILTER & SEARCH ============ */
+document.getElementById('kategoriList').addEventListener('click', e=>{
+  if(e.target.classList.contains('kategori-btn')){
+    document.querySelectorAll('.kategori-btn').forEach(b=>b.classList.remove('active'));
+    e.target.classList.add('active');
+    filterKategori = e.target.dataset.kategori;
+    renderProduk();
+  }
+});
+document.getElementById('searchInput').addEventListener('input', e=>{
+  searchQuery = e.target.value;
+  renderProduk();
+});
+
+/* ============ CART ============ */
+function addToCart(nama, harga, img, id){
+  const key = id || nama;
+  const found = cart.find(c=>c.key===key);
+  if(found){ found.qty++; }
+  else{ cart.push({key, nama, harga, img, qty:1}); }
+  updateCartCount();
+  showNotif(`✅ ${nama} ditambahkan ke keranjang`);
+}
+function updateCartCount(){
+  const total = cart.reduce((s,c)=>s+c.qty,0);
+  document.getElementById('cartCount').textContent = total;
+}
+function openCart(){
+  const box = document.getElementById('modalBox');
+  if(cart.length===0){
+    box.innerHTML = `
+      <h3>Keranjang <button class="modal-close" onclick="closeModal()">&times;</button></h3>
+      <div class="empty-cart"><i class="fas fa-shopping-basket"></i><p>Keranjang masih kosong</p><p style="font-size:.8rem;color:#aaa;margin-top:6px;">Yuk pilih tanaman favoritmu!</p></div>
+      <a href="#tanaman" class="btn-primary" style="width:100%;text-align:center;display:block;" onclick="closeModal()">Mulai Belanja</a>
+    `;
+  } else {
+    let total = 0;
+    let items = cart.map((c,i)=>{
+      total += c.harga * c.qty;
+      return `
+        <div class="cart-item">
+          <img src="${c.img}" alt="${c.nama}">
+          <div class="cart-item-info">
+            <h5>${c.nama}</h5>
+            <div class="price">Rp ${c.harga.toLocaleString('id-ID')}</div>
+            <div class="cart-item-qty">
+              <button onclick="changeQty(${i},-1)">−</button>
+              <span>${c.qty}</span>
+              <button onclick="changeQty(${i},1)">+</button>
+            </div>
+          </div>
+          <button class="cart-item-remove" onclick="removeItem(${i})"><i class="fas fa-trash"></i></button>
+        </div>
+      `;
+    }).join('');
+    box.innerHTML = `
+      <h3>Keranjang <button class="modal-close" onclick="closeModal()">&times;</button></h3>
+      ${items}
+      <div class="cart-total">Total: Rp ${total.toLocaleString('id-ID')}</div>
+      <button class="btn-primary" style="width:100%;margin-bottom:8px;" onclick="showCheckout()">Checkout</button>
+      <a href="https://wa.me/6287768282372?text=${encodeURIComponent(generateWaMessage())}" target="_blank" class="btn-small wa" style="width:100%;padding:12px;"><i class="fab fa-whatsapp"></i> Pesan via WhatsApp</a>
+    `;
+  }
+  document.getElementById('modalOverlay').classList.add('active');
+}
+function changeQty(i, delta){
+  cart[i].qty += delta;
+  if(cart[i].qty<=0) cart.splice(i,1);
+  updateCartCount();
+  openCart();
+}
+function removeItem(i){
+  cart.splice(i,1);
+  updateCartCount();
+  openCart();
+}
+function generateWaMessage(){
+  let total = cart.reduce((s,c)=>s+c.harga*c.qty,0);
+  let list = cart.map(c=>`- ${c.nama} x${c.qty} = Rp ${(c.harga*c.qty).toLocaleString('id-ID')}`).join('\n');
+  return `Halo Tanaman Hijau, saya ingin memesan:\n\n${list}\n\nTotal: Rp ${total.toLocaleString('id-ID')}\n\nMohon informasi untuk proses pemesanannya. Terima kasih.`;
+}
+
+/* ============ CHECKOUT ============ */
+function showCheckout(){
+  const total = cart.reduce((s,c)=>s+c.harga*c.qty,0);
+  const box = document.getElementById('modalBox');
+  box.innerHTML = `
+    <h3>Checkout <button class="modal-close" onclick="closeModal()">&times;</button></h3>
+    <div class="form-group"><label>Nama</label><input type="text" id="coNama" placeholder="Nama lengkap"></div>
+    <div class="form-group"><label>Nomor WhatsApp</label><input type="text" id="coWa" placeholder="08xxxxxxxxxx"></div>
+    <div class="form-group"><label>Alamat Lengkap</label><textarea id="coAlamat" placeholder="Alamat pengiriman"></textarea></div>
+    <div class="form-group"><label>Metode</label>
+      <div class="radio-group">
+        <label><input type="radio" name="metode" value="Ambil sendiri" checked> Ambil sendiri</label>
+        <label><input type="radio" name="metode" value="Pengiriman"> Pengiriman</label>
+      </div>
+    </div>
+    <div class="form-group"><label>Catatan Pesanan</label><textarea id="coCatatan" placeholder="Contoh: tolong dibungkus rapi"></textarea></div>
+    <div class="cart-total">Total: Rp ${total.toLocaleString('id-ID')}</div>
+    <button class="btn-primary" style="width:100%;margin-bottom:8px;" onclick="doCheckout()">Kirim Pesanan via WhatsApp</button>
+    <button class="btn-small" style="width:100%;" onclick="openCart()">← Kembali ke Keranjang</button>
+  `;
+  document.getElementById('modalOverlay').classList.add('active');
+}
+function doCheckout(){
+  const nama = document.getElementById('coNama').value.trim();
+  const wa = document.getElementById('coWa').value.trim();
+  const alamat = document.getElementById('coAlamat').value.trim();
+  const metode = document.querySelector('input[name="metode"]:checked').value;
+  const catatan = document.getElementById('coCatatan').value.trim();
+  if(!nama || !wa || !alamat){ alert('Mohon lengkapi Nama, Nomor WhatsApp, dan Alamat.'); return; }
+  let total = cart.reduce((s,c)=>s+c.harga*c.qty,0);
+  let list = cart.map(c=>`- ${c.nama} x${c.qty} = Rp ${(c.harga*c.qty).toLocaleString('id-ID')}`).join('\n');
+  const msg = `Halo Tanaman Hijau, saya ingin memesan:\n\nNama: ${nama}\nWhatsApp: ${wa}\nAlamat: ${alamat}\nMetode: ${metode}\n\nProduk:\n${list}\n\nTotal: Rp ${total.toLocaleString('id-ID')}\nCatatan: ${catatan || '-'}\n\nMohon informasi untuk proses pemesanannya. Terima kasih.`;
+  window.open('https://wa.me/6287768282372?text='+encodeURIComponent(msg), '_blank');
+  closeModal();
+  cart = [];
+  updateCartCount();
+  showNotif('✅ Pesanan dikirim ke WhatsApp!');
+}
+
+/* ============ DETAIL PRODUK ============ */
+function showDetail(id){
+  const t = tanamanData.find(x=>x.id===id);
+  if(!t) return;
+  const box = document.getElementById('modalBox');
+  box.innerHTML = `
+    <h3>${t.nama} <button class="modal-close" onclick="closeModal()">&times;</button></h3>
+    <img class="detail-img" src="${t.img}" alt="${t.nama}">
+    <div style="font-size:1.3rem;font-weight:700;color:var(--hijau-tua);margin:8px 0;">Rp ${t.harga.toLocaleString('id-ID')}</div>
+    <p style="font-size:.88rem;color:#4a5e46;margin-bottom:12px;">${t.desc}</p>
+    <div class="detail-row"><span>Manfaat</span><span>${t.manfaat}</span></div>
+    <div class="detail-row"><span>Cocok ditanam di</span><span>${t.cocok}</span></div>
+    <div class="detail-row"><span>Tingkat perawatan</span><span>${t.perawatan}</span></div>
+    <div class="detail-row"><span>Ukuran</span><span>${t.ukuran}</span></div>
+    <div class="detail-row"><span>Stok</span><span>${t.stok?'Tersedia':'Habis'}</span></div>
+    <div class="qty-control">
+      <button onclick="detailQty(-1)">−</button>
+      <input type="number" id="detailQty" value="1" min="1">
+      <button onclick="detailQty(1)">+</button>
+    </div>
+    <button class="btn-primary" style="width:100%;margin-bottom:8px;" onclick="addFromDetail('${t.nama}',${t.harga},'${t.img}','${t.id}')">Tambah ke Keranjang</button>
+    <a href="https://wa.me/6287768282372?text=${encodeURIComponent('Halo Tanaman Hijau, saya ingin memesan '+t.nama+' (Rp '+t.harga+')')}" target="_blank" class="btn-small wa" style="width:100%;padding:12px;"><i class="fab fa-whatsapp"></i> Pesan Sekarang via WhatsApp</a>
+  `;
+  document.getElementById('modalOverlay').classList.add('active');
+}
+function detailQty(d){
+  const inp = document.getElementById('detailQty');
+  let v = parseInt(inp.value)+d;
+  if(v<1) v=1;
+  inp.value = v;
+}
+function addFromDetail(nama,harga,img,id){
+  const qty = parseInt(document.getElementById('detailQty').value)||1;
+  for(let i=0;i<qty;i++) addToCart(nama,harga,img,id);
+  closeModal();
+}
+
+/* ============ WISHLIST ============ */
+function toggleWish(id, btn){
+  const idx = wishlist.indexOf(id);
+  if(idx>=0){ wishlist.splice(idx,1); btn.classList.remove('active'); showNotif('💔 Dihapus dari wishlist'); }
+  else{ wishlist.push(id); btn.classList.add('active'); showNotif('❤️ Ditambahkan ke wishlist'); }
+}
+
+/* ============ MODAL ============ */
+function closeModal(){ document.getElementById('modalOverlay').classList.remove('active'); }
+document.getElementById('modalOverlay').addEventListener('click', e=>{
+  if(e.target.id==='modalOverlay') closeModal();
+});
+
+/* ============ NOTIF ============ */
+function showNotif(msg){
+  const n = document.getElementById('notif');
+  n.textContent = msg;
+  n.classList.add('show');
+  clearTimeout(window._notifT);
+  window._notifT = setTimeout(()=>n.classList.remove('show'), 2200);
+}
+
+/* ============ MENU MOBILE ============ */
+function toggleMenu(){ document.getElementById('navMenu').classList.toggle('active'); }
+function closeMenu(){ document.getElementById('navMenu').classList.remove('active'); }
+function focusSearch(){ document.getElementById('searchInput').focus(); document.getElementById('tanaman').scrollIntoView({behavior:'smooth'}); }
+
+/* ============ INIT ============ */
+renderPaket();
+renderProduk();
+renderPerlengkapan();
+updateCartCount();
+</script>
+</body>
+</html>
